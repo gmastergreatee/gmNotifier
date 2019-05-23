@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./jquery.min.js"></script>
+    <link rel="stylesheet" href="./gm-notifier.css">
+</head>
+
+<body>
+    <textarea type="text" name="" id="asd2"></textarea>
+    <button type="button" id="asd">Notify</button>
+
+    <script src="./gm-notifier.js"></script>
+    <script>
+        $(document).ready(() => {
+            gmNotifier.setPosition('topRight', 'left')
+            $('#asd').click(() => {
+                gmNotifier.notify($('#asd2').val().trim());
+                $.each()
+            });
+
+            $('#asd2').val('testing');
+            $('#asd').click();
+
+        });
+    </script>
+</body>
+
+</html>
