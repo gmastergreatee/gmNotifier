@@ -241,10 +241,6 @@
             }
         }
 
-        if (currentPosition == 'leftCenter' || currentPosition == 'rightCenter') {
-            $('.gm-notifier-item').css('margin-top', '10px');
-        }
-
         if (timeout > 0) {
             setTimeout(() => {
                 notification.find('.gm-notifier-hide').remove();
