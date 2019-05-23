@@ -6,25 +6,110 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <script src="./jquery.min.js"></script>
-    <link rel="stylesheet" href="./gm-notifier.css">
+    <script src="./assets/jquery.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=PT+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./assets/main.css">
+    <link rel="stylesheet" href="./dist/gm-notifier.css">
 </head>
 
 <body>
-    <textarea type="text" name="" id="asd2"></textarea>
-    <button type="button" id="asd">Notify</button>
 
-    <script src="./gm-notifier.js"></script>
+    <div class="header">
+        <div class="container">
+            <h3>
+                GM-Notifier
+            </h3>
+        </div>
+    </div>
+
+    <div class="container">
+
+        <div class="panel danger">
+            <b>NOTE :</b>
+            <div>
+                "Appear From" values of <i>"top"</i> & <i>"bottom"</i> won't work with "Position" of <i>"LeftCenter"</i>
+                and <i>"RightCenter"</i>.
+            </div>
+        </div>
+
+        <div class="item">
+            <div class="item-head">
+                Position :
+            </div>
+            <div class="item-body">
+                <select class="selector" id="sel-pos">
+                    <option value="topLeft">Top Left</option>
+                    <option value="topCenter">Top Center</option>
+                    <option value="topRight">Top Right</option>
+                    <option value="leftCenter">Left Center</option>
+                    <option value="rightCenter">Right Center</option>
+                    <option value="bottomLeft">Bottom Left</option>
+                    <option value="bottomCenter">Bottom Center</option>
+                    <option value="bottomRight">Bottom Right</option>
+                </select>
+            </div>
+        </div>
+        <div class="item">
+            <div class="item-head">
+                Appear From :
+            </div>
+            <div class="item-body">
+                <select class="selector" id="sel-appear">
+                    <option value="top">Top</option>
+                    <option value="bottom">Bottom</option>
+                    <option value="left">Left</option>
+                    <option value="right">Right</option>
+                </select>
+            </div>
+        </div>
+        <div class="item">
+            <div class="item-head">
+                Timeout :
+            </div>
+            <div class="item-body">
+                <input type="number" class="selector" id="txt-timeout" value="2500" min="0">
+            </div>
+        </div>
+        <div class="item">
+            <div class="item-head">
+                Notification Content :
+            </div>
+            <div class="item-body">
+                <textarea class="selector" id="txt-notify-text">Hi from Notifier!!</textarea>
+            </div>
+        </div>
+        <div class="item">
+            <div class="btn-panel">
+                <button type="button" class="btn btn-info" id="btn-notify">Notify</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="./dist/gm-notifier.js"></script>
     <script>
         $(document).ready(() => {
-            gmNotifier.setPosition('topRight', 'left')
-            $('#asd').click(() => {
-                gmNotifier.notify($('#asd2').val().trim());
-                $.each()
+            let position = $('#sel-pos').val();
+            let appearFrom = $('#sel-appear').val();
+
+            gmNotifier.setPosition(position, appearFrom)
+
+            $('#sel-pos').on('change', function () {
+                position = $('#sel-pos').val();
             });
 
-            $('#asd2').val('testing');
-            $('#asd').click();
+            $('#sel-appear').on('change', function () {
+                appearFrom = $('#sel-appear').val();
+            });
+
+            $('#btn-notify').click(() => {
+                let timeOut = parseInt($('#txt-timeout').val());
+                let text = $('#txt-notify-text').val().trim();
+
+                gmNotifier.setPosition(position, appearFrom);
+                gmNotifier.notify(text, timeOut);
+            });
+
+            $('#btn-notify').click();
 
         });
     </script>

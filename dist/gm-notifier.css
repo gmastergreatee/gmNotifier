@@ -1,0 +1,53 @@
+#gm-notifier {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    flex-flow: column;
+    padding: 10px;
+    pointer-events: none;
+}
+
+.gm-notifier-item {
+    background-color: #fca6a6;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+    font-size: 18px;
+    border-radius: 4px;
+    opacity: 0;
+    overflow: hidden;
+    line-height: 0;
+    pointer-events: all;
+}
+
+.gm-notifier-hide {
+    display: flex;
+    visibility: hidden;
+    font-size: 24px;
+    font-weight: bold;
+    width: 30px;
+    height: 30px;
+    justify-content: center;
+    align-items: center;
+    background-color: blue;
+    color: white;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.gm-notifier-item:hover .gm-notifier-hide {
+    visibility: visible;
+}
+
+.gm-notifier-hide:hover {
+    background-color: #4646ff;
+    box-shadow: 0 0 5px 0 black;
+}
+
+.actual-text {
+    width: calc(100% - 35px);
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
